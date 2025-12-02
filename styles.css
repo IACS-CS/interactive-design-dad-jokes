@@ -1,0 +1,242 @@
+/* AI-generated dropdown menu styles start here */
+
+/* Container for the dropdown to keep things organized */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* The button that you click to open/close the menu */
+.dropdown-button {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* When you hover over the button, make it darker */
+.dropdown-button:hover {
+  background-color: #2980b9;
+}
+
+/* The menu that contains all the options */
+.dropdown-menu {
+  /* Start hidden - display: none means it's not visible */
+  display: none;
+  /* Position it right below the button */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 12px 0;
+  z-index: 1;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+}
+
+/* When the menu has the "show" class, display it */
+.dropdown-menu.show {
+  display: block;
+}
+
+/* Each clickable option in the dropdown menu */
+.dropdown-item {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* When you hover over an option, highlight it */
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* AI-generated dropdown menu styles end here */
+
+/* AI-generated "Wrong Choice" animation styles start here */
+/* Student prompt was: Make "Wrong Choice" text move across the bottom
+   of the screen when Option 1 is clicked */
+
+/* The "Wrong Choice" text element */
+.wrong-choice {
+  /* Position it at the bottom of the screen */
+  position: fixed;
+  bottom: 20px;
+  left: -200px; /* Start off the left side of the screen */
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  white-space: nowrap; /* Keep text on one line */
+  z-index: 100; /* Make sure it's on top of other elements */
+}
+
+/* This is the animation that makes the text move */
+@keyframes slide-across {
+  0% {
+    /* Start position: off the left side */
+    left: -200px;
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    /* End position: off the right side */
+    left: 100vw; /* vw = view width, so this is off screen right */
+    opacity: 1; /* Still visible while moving */
+  }
+}
+
+/* When the "animate" class is added, play the animation */
+.wrong-choice.animate {
+  animation: slide-across 2s linear forwards;
+  /* 2s = takes 2 seconds to complete
+     linear = moves at the same speed the whole time
+     forwards = stays in the final position after animation ends */
+}
+
+/* AI-generated "Wrong Choice" animation styles end here */
+
+/* AI-generated Bowline knot content styles start here */
+/* Student prompt was: Display ASCII art and information about Bowline knots */
+
+/* The container for Bowline information */
+.bowline-content {
+  background-color: #f0f7ff;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+/* Hide the content by default */
+.bowline-content.hidden {
+  display: none;
+}
+
+/* Style for the ASCII art ASCII art section */
+.ascii-art {
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  margin: 15px 0;
+  line-height: 1.4;
+}
+
+/* Headings inside the Bowline content */
+.bowline-content h2 {
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.bowline-content h3 {
+  color: #34495e;
+  margin-top: 20px;
+}
+
+/* Paragraphs and lists inside */
+.bowline-content p,
+.bowline-content ul,
+.bowline-content ol {
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.bowline-content ul,
+.bowline-content ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.bowline-content li {
+  margin: 8px 0;
+}
+
+/* The close button */
+.close-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #c0392b;
+}
+
+/* AI-generated Bowline knot content styles end here */
+
+/* AI-generated Buntline knot content styles start here */
+/* Student prompt was: Display ASCII art and information about Buntline knots */
+
+/* The container for Buntline information */
+.buntline-content {
+  background-color: #fff0f5;
+  border: 2px solid #e74c3c;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 20px 0;
+  max-width: 800px;
+}
+
+/* Hide the content by default */
+.buntline-content.hidden {
+  display: none;
+}
+
+/* Headings inside the Buntline content */
+.buntline-content h2 {
+  color: #c0392b;
+  border-bottom: 3px solid #e74c3c;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+.buntline-content h3 {
+  color: #a93226;
+  margin-top: 20px;
+}
+
+/* Paragraphs and lists inside */
+.buntline-content p,
+.buntline-content ul,
+.buntline-content ol {
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.buntline-content ul,
+.buntline-content ol {
+  margin: 15px 0;
+  padding-left: 25px;
+}
+
+.buntline-content li {
+  margin: 8px 0;
+}
+
+/* ASCII art in Buntline section */
+.buntline-content .ascii-art {
+  background-color: #ffe4e1;
+  border: 1px solid #daa520;
+}
+
+/* AI-generated Buntline knot content styles end here */
