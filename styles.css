@@ -67,7 +67,8 @@
   --bg: #27187E;    /* default background color */
   --text: #F1F2F6;  /* default text color */
   --bowline-bg: #FFA139; /* Bowline box color */
-  --buntline-bg: #17173A; /* Buntline box color */
+  --buntline-bg: #17173A; /* Sheet Bend (buntline-content) original color */
+  --backsplice-bg: #600A0A; /* Back Splice specific box color */
   --third-bg: #758BFD; /* third box color (dropdown) */
 }
 
@@ -131,14 +132,14 @@ a { color: #D0D5FA; }
 
 /* The container for Bowline information */
 .bowline-content {
-  /* Use the requested Bowline box color and ensure readable text */
-  background-color: var(--bowline-bg);
-  border: 2px solid #5C6EF8;
+  /* Original Bowline box color #FF961F with light text */
+  background-color: #FF961F;
+  border: 2px solid #E07E1A;
   border-radius: 8px;
   padding: 30px;
   margin: 20px 0;
   max-width: 800px;
-  color: var(--text); /* make all text inside this box the requested light color */
+  color: #F1F2F6;
 }
 
 /* Hide the content by default */
@@ -147,34 +148,30 @@ a { color: #D0D5FA; }
 }
 
 /* Style for the ASCII art section used by Bowline */
-.ascii-art {
-  background-color: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.06);
+.bowline-content .ascii-art {
+  /* Bowline-specific ASCII art uses monospace to preserve alignment */
+  background-color: #E07E1A;
+  border: 1px solid rgba(241,242,246,0.2);
   padding: 15px;
   border-radius: 4px;
-  /* Use the main Shadows Into Light font so ASCII art matches page style */
-  font-family: 'Shadows Into Light', cursive, system-ui;
-  /* Slightly larger so handwritten style is readable */
-  font-size: 20px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
   overflow-x: auto;
   margin: 15px 0;
-  line-height: 1.3;
-  color: var(--text);
-  /* Keep preformatted whitespace behavior to preserve ASCII structure
-     but note: non-monospace fonts can change alignment of ASCII art */
-  white-space: pre;
+  line-height: 1.4;
+  color: #F1F2F6;
 }
 
 /* Headings inside the Bowline content */
 .bowline-content h2 {
-  color: var(--text);
-  border-bottom: 3px solid rgba(241,242,246,0.12);
+  color: #F1F2F6;
+  border-bottom: 3px solid rgba(241,242,246,0.2);
   padding-bottom: 10px;
   margin-top: 0;
 }
 
 .bowline-content h3 {
-  color: var(--text);
+  color: #F1F2F6;
   margin-top: 20px;
 }
 
@@ -183,7 +180,7 @@ a { color: #D0D5FA; }
 .bowline-content ul,
 .bowline-content ol {
   line-height: 1.6;
-  color: var(--text);
+  color: #F1F2F6;
 }
 
 .bowline-content ul,
@@ -217,13 +214,13 @@ a { color: #D0D5FA; }
 
 /* Close button specifically for the Bowline (Option 2) */
 #close-bowline {
-  background-color: #CB6D01; /* updated color per user request */
+  background-color: #FF961F; /* restored original color */
   color: var(--text); /* ensure text inside is the light color */
   border: none;
 }
 
 #close-bowline:hover {
-  background-color: #A85701; /* slightly darker on hover */
+  background-color: #E07E1A; /* slightly darker on hover */
 }
 
 /* AI-generated Buntline knot content styles start here */
@@ -288,6 +285,12 @@ a { color: #D0D5FA; }
 }
 
 /* AI-generated Buntline knot content styles end here */
+
+/* Back Splice specific background override so Sheet Bend keeps original color */
+#backsplice-content {
+  background-color: var(--backsplice-bg);
+  color: var(--text);
+}
 
 /* Close button specifically for the Buntline (Option 3) */
 #close-buntline {

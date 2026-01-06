@@ -15,7 +15,28 @@ dropdownButton.addEventListener("click", function () {
   // The "show" class makes the menu visible
   // This toggles the class on and off with each click
   dropdownMenu.classList.toggle("show");
+  // Play beep on the dropdown button click
+  playBeep();
 });
+
+// Reusable beep sound for clicks
+function playBeep() {
+  try {
+    let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let oscillator = audioContext.createOscillator();
+    let gainNode = audioContext.createGain();
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    oscillator.frequency.value = 400;
+    oscillator.type = "sine";
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+  } catch (e) {
+    console.warn("Audio not available:", e);
+  }
+}
 
 // When the user clicks on a dropdown option (any item inside the menu)
 let dropdownItems = document.querySelectorAll(".dropdown-item");
@@ -25,6 +46,8 @@ for (let i = 0; i < dropdownItems.length; i++) {
   dropdownItems[i].addEventListener("click", function (event) {
     // Prevent the link from actually going somewhere (the # URL)
     event.preventDefault();
+    // Play beep for every option click
+    playBeep();
     // Get the text of what was clicked (e.g., "Option 1")
     let selectedText = this.textContent;
     // Show in the console what was clicked (helps us debug)
@@ -38,41 +61,13 @@ for (let i = 0; i < dropdownItems.length; i++) {
     // Student prompt was: Make Option 1 play a click sound and animate
     // "Wrong Choice" text across the bottom of the screen
     // Check if the user clicked on "Option 1"
-    if (selectedText === "Option 1") {
-      // Create a sound effect using the Web Audio API (built into browsers)
-      // We create an audio context and make a beeping sound
-      let audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      // Create an oscillator (sound wave generator)
-      let oscillator = audioContext.createOscillator();
-      // Create a volume control
-      let gainNode = audioContext.createGain();
-      // Connect the oscillator to the volume control, then to speakers
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      // Set sound properties
-      oscillator.frequency.value = 400; // The pitch of the sound (in Hz)
-      oscillator.type = "sine"; // Type of sound wave
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime); // Volume level
-      // Fade out the sound to make it sound nicer
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.01,
-        audioContext.currentTime + 0.1
-      );
-
-      // Play the sound
-      oscillator.start(audioContext.currentTime); // Start now
-      oscillator.stop(audioContext.currentTime + 0.1); // Stop after 0.1 seconds
-
-      // Now trigger the "Wrong Choice" animation
-      // Get the element that contains the "Wrong Choice" text
+    if (
+      selectedText === "Option 1" ||
+      selectedText.trim().toLowerCase() === "don't click me"
+    ) {
+      // Trigger the "Wrong Choice" animation
       let wrongChoiceElement = document.querySelector("#wrong-choice-text");
-      // Add the "animate" class to start the animation
       wrongChoiceElement.classList.add("animate");
-
-      // After the animation is done (2 seconds), remove the class
-      // so we can play it again next time
       setTimeout(function () {
         wrongChoiceElement.classList.remove("animate");
       }, 2000);
@@ -80,33 +75,12 @@ for (let i = 0; i < dropdownItems.length; i++) {
     // AI-generated code for Option 1 special effect ends here
 
     // AI-generated code for Option 2 special effect starts here
-    // Student prompt was: Make Option 2 play a click sound and display
+    // Student prompt was: Make Option 2 (The Bowline Knot) play a click sound and display
     // ASCII art of a Bowline knot with explanation
-    if (selectedText === "Option 2") {
-      // Create the same click sound as Option 1
-      let audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      let oscillator = audioContext.createOscillator();
-      let gainNode = audioContext.createGain();
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      oscillator.frequency.value = 400; // Same 400Hz pitch
-      oscillator.type = "sine";
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.01,
-        audioContext.currentTime + 0.1
-      );
-
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-
+    if (selectedText === "Option 2" || selectedText.trim() === "The Bowline Knot") {
       // Show the Bowline knot information
       let bowlineContent = document.querySelector("#bowline-content");
-      // Remove the "hidden" class to make it visible
       bowlineContent.classList.remove("hidden");
-      // Scroll to the top so the user can see the content
       window.scrollTo(0, 0);
     }
     // AI-generated code for Option 2 special effect ends here
@@ -115,31 +89,19 @@ for (let i = 0; i < dropdownItems.length; i++) {
     // Student prompt was: Make Option 3 play a click sound and display
     // ASCII art of a Buntline knot with explanation
     if (selectedText === "Option 3") {
-      // Create the same click sound
-      let audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-      let oscillator = audioContext.createOscillator();
-      let gainNode = audioContext.createGain();
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-
-      oscillator.frequency.value = 400; // Same 400Hz pitch
-      oscillator.type = "sine";
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.01,
-        audioContext.currentTime + 0.1
-      );
-
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-
-      // Show the Buntline knot information
+      // Show the Buntline/Sheet Bend knot information
       let buntlineContent = document.querySelector("#buntline-content");
-      // Remove the "hidden" class to make it visible
       buntlineContent.classList.remove("hidden");
-      // Scroll to the top so the user can see the content
       window.scrollTo(0, 0);
+    }
+
+    // Option 4 -> Back Splice
+    if (selectedText === "Option 4" || selectedText.trim() === "Back Splice") {
+      let backspliceContent = document.querySelector("#backsplice-content");
+      if (backspliceContent) {
+        backspliceContent.classList.remove("hidden");
+        window.scrollTo(0, 0);
+      }
     }
     // AI-generated code for Option 3 special effect ends here
   });
@@ -163,6 +125,8 @@ document.addEventListener("click", function (event) {
 let closeBowlineButton = document.querySelector("#close-bowline");
 // When the user clicks the close button
 closeBowlineButton.addEventListener("click", function () {
+  // Play click sound when closing
+  playBeep();
   // Get the Bowline content area
   let bowlineContent = document.querySelector("#bowline-content");
   // Add the "hidden" class to hide it
@@ -175,9 +139,26 @@ closeBowlineButton.addEventListener("click", function () {
 let closeBuntlineButton = document.querySelector("#close-buntline");
 // When the user clicks the close button
 closeBuntlineButton.addEventListener("click", function () {
+  // Play click sound when closing
+  playBeep();
   // Get the Buntline content area
   let buntlineContent = document.querySelector("#buntline-content");
   // Add the "hidden" class to hide it
   buntlineContent.classList.add("hidden");
 });
 // AI-generated code for Option 3 close button ends here
+
+// AI-generated code for Option 4 close button starts here
+// Get the close button for the Back Splice content
+let closeBackspliceButton = document.querySelector("#close-backsplice");
+if (closeBackspliceButton) {
+  closeBackspliceButton.addEventListener("click", function () {
+    // Play click sound when closing
+    playBeep();
+    // Get the Back Splice content area
+    let backspliceContent = document.querySelector("#backsplice-content");
+    // Add the "hidden" class to hide it
+    if (backspliceContent) backspliceContent.classList.add("hidden");
+  });
+}
+// AI-generated code for Option 4 close button ends here
