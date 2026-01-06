@@ -88,7 +88,7 @@ for (let i = 0; i < dropdownItems.length; i++) {
     // AI-generated code for Option 3 special effect starts here
     // Student prompt was: Make Option 3 play a click sound and display
     // ASCII art of a Buntline knot with explanation
-    if (selectedText === "Option 3") {
+    if (selectedText === "Option 3" || selectedText.trim() === "The Sheet Bend") {
       // Show the Buntline/Sheet Bend knot information
       let buntlineContent = document.querySelector("#buntline-content");
       buntlineContent.classList.remove("hidden");

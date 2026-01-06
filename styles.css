@@ -292,9 +292,9 @@ a { color: #D0D5FA; }
   color: var(--text);
 }
 
-/* Close button specifically for the Buntline (Option 3) */
+/* Close button specifically for the Buntline (Option 3 / The Sheet Bend) */
 #close-buntline {
-  background-color: #0B0821; /* requested button color */
+  background-color: #D4751A; /* darker orange */
   color: var(--text);
   border: none;
   padding: 10px 20px;
@@ -303,5 +303,5 @@ a { color: #D0D5FA; }
 }
 
 #close-buntline:hover {
-  background-color: #09061a; /* slightly darker hover */
+  background-color: #B85F14; /* even darker orange on hover */
 }
